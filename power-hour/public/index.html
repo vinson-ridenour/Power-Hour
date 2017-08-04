@@ -27,7 +27,11 @@
         // The ID token you need to pass to your backend:
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
-      };
+        if (typeof id_token !== 'undefined') {
+            //have token, go to DASHBOARD page
+            window.location.replace("/dashboard");
+        }
+    };
     </script>
     <section id="cover">
         <div id="cover-caption">
