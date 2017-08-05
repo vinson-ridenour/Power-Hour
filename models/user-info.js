@@ -82,3 +82,7 @@ module.exports = function(sequelize, DataTypes) {
   };
   return Users;
 };
+
+function invoiceSaved() {
+  return true;
+}
