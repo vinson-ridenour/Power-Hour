@@ -1,6 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
     // Sets up Users table columns with data types
+    user_id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true  
+    },
     first_name: {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
@@ -66,9 +71,11 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+// Include other associations as other models are built out
+
   Users.associate = function(models) {
     // Associating Users with Clients
-    // When a User is deleted, this deletes all their corresponding Clients
+    // When a User is deleted, this deletes all of their corresponding Clients
     Users.hasMany(models.Clients, {
       onDelete: "cascade"
     });
