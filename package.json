@@ -30,8 +30,20 @@
     "sequelize": "^4.3.1"
   },
   "devDependencies": {
+    "browserify": "^13.1.0",
     "chai": "^3.5.0",
+    "karma": "^1.1.2",
+    "karma-browserify": "^5.1.0",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-commonjs": "^1.0.0",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-reporter": "^2.1.0",
     "mocha": "^3.0.0",
-    "selenium-webdriver": "^3.5.0"
+    "selenium-webdriver": "^3.5.0",
+    "watchify": "^3.7.0",
+    "jasmine-core": "^2.7.0",
+    "karma-html-reporter": "^0.2.7",
+    "karma-htmlfile-reporter": "^0.3.4",
+    "karma-jasmine": "^1.1.0"
   }
 }
