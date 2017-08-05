@@ -38,7 +38,8 @@ module.exports = function(app) {
 		})
 	});
 
-	//Update a user
+	//Update or Delete a user
+	//##To Do: add flag for deleted user
 	app.post("/users/list/:id", function(req, res) {
 		console.log(req.params)
 		db.Users.update({
