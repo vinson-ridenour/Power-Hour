@@ -1,11 +1,18 @@
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
     // Sets up Users table columns with data types
+    user_id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true  
+    },
     first_name: {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
+        is: /^[a-zA-Z ' -]*$/i, // only letters but will space, -, '
+        // is: /^[a-z]+$\-\ \'/i, 
+        isNumeric: false,
         len: [1, 30]
       }
     },
@@ -13,7 +20,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
+        isNumeric: false,
         len: [1, 30]
       }
     },
@@ -57,31 +64,24 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
-        len: [20]
+        len: [0, 20]
       }
     },
-    created_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+    active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+      }
   });
 
-//code to test
-function alwaysTrue(){
-  tester = 2
-  confirm = "works!"
-  if(tester = 2){
-return confirm
-  };
-};
-//test over
+// Include other associations as other models are built out
 
-  Users.associate = function(models) {
-    // Associating Users with Clients
-    // When a User is deleted, this deletes all their corresponding Clients
-    Users.hasMany(models.Clients, {
-      onDelete: "cascade"
-    });
-  };
+  // Users.associate = function(models) {
+  //   // Associating Users with Clients
+  //   // When a User is deleted, this deletes all of their corresponding Clients
+  //   Users.hasMany(models.Clients, {
+  //     onDelete: "cascade"
+  //   });
+  // };
   return Users;
 };
