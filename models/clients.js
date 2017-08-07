@@ -1,73 +1,26 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+  var Clients = sequelize.define("Clients", {
     // Sets up Users table columns with data types
-    user_id: {
+    client_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true  
     },
-    first_name: {
+    client_name: {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
       validate: {
-        is: /^[a-zA-Z ' -]*$/i, // only letters but will space, -, '
-        // is: /^[a-z]+$\-\ \'/i, 
-        isNumeric: false,
-        len: [1, 30]
+        len: [1, 50]
       }
     },
-    last_name: {
+    project_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNumeric: false,
-        len: [1, 30]
+        len: [1, 50]
       }
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 50]
-      }
-    },
-    city: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 30]
-      }
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 2]
-      }
-    },
-    zip: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [10]
-      }
-    },
-    email_address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        isEmail: true, // checks for email format
-        len: [1]
-      }
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 20]
-      }
-    },
-    active: {
+    client_active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
@@ -83,5 +36,5 @@ module.exports = function(sequelize, DataTypes) {
   //     onDelete: "cascade"
   //   });
   // };
-  return Users;
+  return Clients;
 };

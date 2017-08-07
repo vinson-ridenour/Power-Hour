@@ -10,16 +10,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
-        len: [1, 30]
+        is: /^[a-zA-Z ' -]*$/i, // only allow letters and space, -, '
+        len: [1, 40]
       }
     },
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
-        len: [1, 30]
+        is: /^[a-zA-Z ' -]*$/i, // only allow letters and space, -, '
+        len: [1, 40]
       }
     },
     address: {
@@ -64,7 +64,12 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [0, 20]
       }
-    }
+    },
+    user_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+      }
   });
 
 //code to test
