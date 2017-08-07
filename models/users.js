@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     user_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true  
+      primaryKey: true
     },
     first_name: {
       type: DataTypes.STRING, // String = 255 characters
@@ -64,10 +64,6 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [0, 20]
       }
-    },
-    created_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
     }
   });
 
