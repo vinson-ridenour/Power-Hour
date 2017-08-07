@@ -72,22 +72,28 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
+  Users.associate = function(models) {
+    // Associating Users with Clients
+    // When a User is deleted, this deletes all of their corresponding Clients
+    Users.hasMany(models.Clients, {
+      onDelete: "cascade"
+    });
+    Users.hasMany(models.Projects, {
+      onDelete: "cascade"
+    });
+    Users.hasMany(models.TimeEntries, {
+      onDelete: "cascade"
+    });
+  };
+  return Users;
+};
+
 //code to test
-function alwaysTrue(){
-  tester = 2
-  confirm = "works!"
-  if(tester = 2){
-return confirm
+function alwaysTrue() {
+  var tester = 2
+  var confirm = "works!"
+  if (tester = 2) {
+    return confirm;
   };
 };
 //test over
-
-  // Users.associate = function(models) {
-  //   // Associating Users with Clients
-  //   // When a User is deleted, this deletes all their corresponding Clients
-  //   Users.hasMany(models.Clients, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-  return Users;
-};
