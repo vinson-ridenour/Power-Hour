@@ -1,87 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
-    // Sets up Users table columns with data types
-    user_id: {
+  var Clients = sequelize.define("Clients", {
+    // Sets up Clients table columns with data types
+    client_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true  
     },
-    first_name: {
-      type: DataTypes.STRING, // String = 255 characters
-      allowNull: false,
-      validate: {
-        is: /^[a-zA-Z ' -]*$/i, // only letters but will space, -, '
-        // is: /^[a-z]+$\-\ \'/i, 
-        isNumeric: false,
-        len: [1, 30]
-      }
-    },
-    last_name: {
+    client_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isNumeric: false,
-        len: [1, 30]
+        len: [1, 50]
       }
     },
-    address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 50]
-      }
-    },
-    city: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 30]
-      }
-    },
-    state: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 2]
-      }
-    },
-    zip: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [10]
-      }
-    },
-    email_address: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        isEmail: true, // checks for email format
-        len: [1]
-      }
-    },
-    phone: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [0, 20]
-      }
-    },
-    active: {
+    client_active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
       defaultValue: true
       }
   });
 
-// Include other associations as other models are built out
 
-  // Users.associate = function(models) {
+  // Include other associations as other models are built out
+
+  // Clients.associate = function(models) {
   //   // Associating Users with Clients
   //   // When a User is deleted, this deletes all of their corresponding Clients
-  //   Users.hasMany(models.Clients, {
+  //   Clients.hasMany(models.Clients, {
   //     onDelete: "cascade"
   //   });
   // };
-  return Users;
+  return Clients;
 };

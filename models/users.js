@@ -4,22 +4,22 @@ module.exports = function(sequelize, DataTypes) {
     user_id: {
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      primaryKey: true  
+      primaryKey: true
     },
     first_name: {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
-        len: [1, 30]
+        is: /^[a-zA-Z ' -]*$/i, // only allow letters and space, -, '
+        len: [1, 40]
       }
     },
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        is: /^[a-z]+$/i, // regex - only allows letters
-        len: [1, 30]
+        is: /^[a-zA-Z ' -]*$/i, // only allow letters and space, -, '
+        len: [1, 40]
       }
     },
     address: {
@@ -65,28 +65,35 @@ module.exports = function(sequelize, DataTypes) {
         len: [0, 20]
       }
     },
-    created_at: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
-    }
+    user_active: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+      }
   });
 
+  Users.associate = function(models) {
+    // Associating Users with Clients
+    // When a User is deleted, this deletes all of their corresponding Clients
+    Users.hasMany(models.Clients, {
+      onDelete: "cascade"
+    });
+    Users.hasMany(models.Projects, {
+      onDelete: "cascade"
+    });
+    Users.hasMany(models.TimeEntries, {
+      onDelete: "cascade"
+    });
+  };
+  return Users;
+};
+
 //code to test
-function alwaysTrue(){
-  tester = 2
-  confirm = "works!"
-  if(tester = 2){
-return confirm
+function alwaysTrue() {
+  var tester = 2
+  var confirm = "works!"
+  if (tester = 2) {
+    return confirm;
   };
 };
 //test over
-
-  // Users.associate = function(models) {
-  //   // Associating Users with Clients
-  //   // When a User is deleted, this deletes all their corresponding Clients
-  //   Users.hasMany(models.Clients, {
-  //     onDelete: "cascade"
-  //   });
-  // };
-  return Users;
-};
