@@ -39,7 +39,7 @@ module.exports = function(app) {
 	});
 
 	//Update or Delete a user
-	//##To Do: add flag for deleted user
+	//##To Do: add flag for inactive user
 	app.post("/users/list/:id", function(req, res) {
 		console.log(req.params)
 		db.Users.update({
