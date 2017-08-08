@@ -3,7 +3,6 @@ var db = require("./../../models");
 module.exports = function(app) {
 	//Create a user
 	app.post("/users/add", function(req, res) {
-		console.log(req.body)
 		db.Users.create({
 			"first_name": req.body.first_name,
 			"last_name": req.body.last_name,
@@ -15,6 +14,7 @@ module.exports = function(app) {
 			"phone": req.body.phone
 		})
 		.then(function(dbPost) {
+			console.log(dbPost);
 			res.json(dbPost);
 		})
 		.catch(function(error){
