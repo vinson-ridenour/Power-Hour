@@ -27,13 +27,13 @@ module.exports = function(app) {
 		console.log(req.params)
 		db.Users.findAll({
 			"where": {
-				"id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.id)
 			}
 		})
-		.then(function(dbPost){
+		.then(function(dbPost) {
 			res.json(dbPost)
 		})
-		.catch(function(error){
+		.catch(function(error) {
 			res.json(error)
 		})
 	});
@@ -51,9 +51,9 @@ module.exports = function(app) {
 				"zip": req.body.zip,
 				"email_address": req.body.email_address,
 				"phone": req.body.phone
-			}, 
+			},
 			{"where": {
-				"id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.id)
 				}
 			}
 		)

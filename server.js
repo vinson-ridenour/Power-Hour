@@ -27,17 +27,20 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static("./power-hour/public"));
 
 // Routes
 // =============================================================
 require("./power-hour/routes/api-routes.js")(app);
+require("./power-hour/routes/users-routes.js")(app);
 require("./power-hour/routes/view-routes.js")(app);
+require("./power-hour/routes/time-entries-routes.js")(app);
+// require("./power-hour/routes/utilities-routes.js")(app);
 
 
 // Starts the server to begin listening
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
