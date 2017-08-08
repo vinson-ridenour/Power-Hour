@@ -76,7 +76,7 @@ module.exports = function(sequelize, DataTypes) {
   TimeEntries.associate = function(models) {
 
     TimeEntries.belongsTo(models.Users, {
-      foreignKey: 'user_id',
+      foreignKey: 'uuid',
       onDelete: "cascade"
     });
     TimeEntries.belongsTo(models.Clients, {

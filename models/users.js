@@ -6,6 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
+    uuid: {
+      type: DataTypes.STRING,
+      foreignKey: true
+    },
     first_name: {
       type: DataTypes.STRING, // String = 255 characters
       allowNull: false,
@@ -75,7 +79,7 @@ module.exports = function(sequelize, DataTypes) {
   Users.associate = function(models) {
     // Associating Users with Time Entries
     Users.hasMany(models.TimeEntries, {
-      foreignKey: 'user_id',
+      foreignKey: 'uuid',
       onDelete: "cascade"
     });
   };
