@@ -17,14 +17,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  // cms route loads cms.html
+  // dashboard route loads dashboard.html
   app.get("/dashboard", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/dashboard.html"));
   });
 
   // blog route loads blog.html
-  app.get("/blog", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/blog.html"));
+  app.get("/account", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/newaccount.html"));
   });
 
   // authors route loads author-manager.html

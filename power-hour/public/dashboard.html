@@ -4,13 +4,18 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="889238950803-knauhhce8b71h7f9dpfc54854v7acjoj.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 
- <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-</head>
+
+    <!--Firebase UI styling -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
+
+    
+    
+<link rel="stylesheet" href="assets/css/style.css">
+
+  </head>
 
   <body>
 <!-- NavBar -->
@@ -21,9 +26,8 @@
   </a>
 </nav>
 
-<br>
-<br>
-<br>
+
+<br><br>
 
 <h1 class="offset-5">Welcome!</h1>
 
@@ -59,62 +63,130 @@
 
 </div>
 
+<br>
+<br>
+<br>
+
 <div class="container">
   <h2> Your Stuff </h2>
 
-      <div id="accordion" role="tablist" aria-multiselectable="true">
-  <div class="card">
-    <div class="card-header" role="tab" id="headingOne">
-      <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Collapsible Group Item #1
-        </a>
-      </h5>
-    </div>
 
-    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-      <div class="card-block">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </a>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="card-block">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingThree">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </a>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="card-block">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-      </div>
-    </div>
-  </div>
-</div>
+   <div id="MainMenu">
+        <div class="list-group panel">
+
+          <a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Client 1</a>
+          <div class="collapse" id="demo3">
+            <a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Project 1 <i class="fa fa-caret-down"></i></a>
+            <div class="collapse list-group-submenu" id="SubMenu1">
+
+            <a href="#" class="list-group-item" data-parent="#SubMenu1">
+
+              <h2 class="offset-5">Project Notes</h2>
+              <br>
+               <table cellpadding="0" cellspacing="0" style="width: 100%">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Date</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">Total Time</th>
+          <th scope="col">Pay Rate</th>
+          <th scope="col">Total Pay</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
     
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>07/08/2017</td>
+          <td>6:30pm</td>
+          <td>9:30pm</td>
+          <td>3hrs?</td>
+          <td>$50/hr</td>
+          <td>$150</td>
+          <td>Hmm...how long can we make this?...</td>
+
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>07/08/2017</td>
+          <td>6:30pm</td>
+          <td>9:30pm</td>
+          <td>3hrs?</td>
+          <td>$50/hr</td>
+          <td>$150</td>
+          <td>Hmm...how long can we make this?...</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>07/08/2017</td>
+          <td>6:30pm</td>
+          <td>9:30pm</td>
+          <td>3hrs?</td>
+          <td>$50/hr</td>
+          <td>$150</td>
+          <td>Hmm...how long can we make this?...</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>07/08/2017</td>
+          <td>6:30pm</td>
+          <td>9:30pm</td>
+          <td>3hrs?</td>
+          <td>$50/hr</td>
+          <td>$150</td>
+          <td>Hmm...how long can we make this?...</td>
+        </tr>
+      </tbody>
+    </table>
+    
+                
+               </a>
+
+              
+              <!--<a href="#" class="list-group-item" data-parent="#SubMenu1">Subitem 2 b</a>-->
+              
+              
+            </div>
+            <!-- <a href="javascript:;" class="list-group-item">Project 2</a> -->
+            <!--<a href="javascript:;" class="list-group-item">Project 3</a> -->
+          </div>
+          
+         
+          
+        </div>
+      </div>
+
+     
+
+      <br>
+    
+
+  
+
+
   </div>
 
-</body>
 
- <!-- jQuery first, then Tether, then Bootstrap JS. -->
+  <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  
+
+    <!-- Firebase details -->
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase-messaging.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
+
+    <script src="/assets/js/firebase-config.js"></script>
+    <script src="/assets/js/firebaseUI-config.js"></script>
+    <script src="/assets/js/firebase-config.js"></script>
+    <script src="/assets/js/firebase-auth.js"></script>
+
+</body>
 </html>
