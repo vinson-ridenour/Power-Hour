@@ -8,6 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     uuid: {
       type: DataTypes.STRING,
+      allowNull: false,
       foreignKey: true
     },
     first_name: {
@@ -43,23 +44,16 @@ module.exports = function(sequelize, DataTypes) {
     state: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [0, 2]
-      }
     },
     zip: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        len: [10]
-      }
     },
     email_address: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         isEmail: true, // checks for email format
-        len: [1]
       }
     },
     phone: {
@@ -79,19 +73,8 @@ module.exports = function(sequelize, DataTypes) {
   Users.associate = function(models) {
     // Associating Users with Time Entries
     Users.hasMany(models.TimeEntries, {
-      foreignKey: 'uuid',
-      onDelete: "cascade"
+      foreignKey: 'uuid'
     });
   };
   return Users;
 };
-
-//code to test
-function alwaysTrue() {
-  var tester = 2
-  var confirm = "works!"
-  if (tester = 2) {
-    return confirm;
-  };
-};
-//test over

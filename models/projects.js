@@ -18,11 +18,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       foreignKey: true
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      foreignKey: true
-    },
     project_active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

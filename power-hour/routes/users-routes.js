@@ -51,9 +51,9 @@ module.exports = function(app) {
 				"zip": req.body.zip,
 				"email_address": req.body.email_address,
 				"phone": req.body.phone
-			}, 
+			},
 			{"where": {
-				"id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.id)
 				}
 			}
 		)
