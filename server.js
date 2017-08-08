@@ -34,7 +34,7 @@ app.use(express.static("./power-hour/public"));
 require("./power-hour/routes/api-routes.js")(app);
 require("./power-hour/routes/users-routes.js")(app);
 require("./power-hour/routes/view-routes.js")(app);
-require("./power-hour/routes/utilities-routes.js")(app);
+// require("./power-hour/routes/utilities-routes.js")(app);
 
 
 // Starts the server to begin listening

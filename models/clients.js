@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
   Clients.associate = function(models) {
     // Associating Clients with Projects
     Clients.hasMany(models.Projects, {
-      foreignKey: 'project_id',
+      foreignKey: 'project_id'
     });
   };
   return Clients;

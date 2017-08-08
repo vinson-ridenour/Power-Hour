@@ -42,7 +42,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     description: {
-      type: DataTypes.TEXT, // String = 255 characters
+      type: DataTypes.TEXT,
       allowNull: true
     },
     total_hours: {
@@ -76,16 +76,14 @@ module.exports = function(sequelize, DataTypes) {
   TimeEntries.associate = function(models) {
 
     TimeEntries.belongsTo(models.Users, {
-      foreignKey: 'user_id',
-      onDelete: "cascade"
+      foreignKey: 'uuid'
     });
     TimeEntries.belongsTo(models.Clients, {
-      foreignKey: 'client_id',
+      foreignKey: 'client_id'
     });
     TimeEntries.belongsTo(models.Projects, {
-      foreignKey: 'project_id',
+      foreignKey: 'project_id'
     });
-
   };
   return TimeEntries;
 };
