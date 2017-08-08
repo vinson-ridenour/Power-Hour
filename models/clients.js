@@ -20,15 +20,11 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-
-  // Include other associations as other models are built out
-
-  // Clients.associate = function(models) {
-  //   // Associating Users with Clients
-  //   // When a User is deleted, this deletes all of their corresponding Clients
-  //   Clients.hasMany(models.Clients, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  Clients.associate = function(models) {
+    // Associating Clients with Projects
+    Clients.hasMany(models.Projects, {
+      foreignKey: 'project_id',
+    });
+  };
   return Clients;
 };

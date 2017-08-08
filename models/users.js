@@ -73,15 +73,9 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Users.associate = function(models) {
-    // Associating Users with Clients
-    // When a User is deleted, this deletes all of their corresponding Clients
-    Users.hasMany(models.Clients, {
-      onDelete: "cascade"
-    });
-    Users.hasMany(models.Projects, {
-      onDelete: "cascade"
-    });
+    // Associating Users with Time Entries
     Users.hasMany(models.TimeEntries, {
+      foreignKey: 'user_id',
       onDelete: "cascade"
     });
   };

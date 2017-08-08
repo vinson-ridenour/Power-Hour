@@ -6,20 +6,27 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true,
       primaryKey: true
     },
-    // user_id: {
-    //   type: DataTypes.INTEGER,
-    //   foreignKey: true
-    // },
-    // client_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // //   foreignKey: true
-    // },
-    // project_id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    // //   foreignKey: true
-    // },
+    user_id: {
+      type: DataTypes.INTEGER,
+      foreignKey: true
+    },
+    client_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      foreignKey: true
+    },
+    project_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      foreignKey: true
+    },
+    date: {
+    type: DataTypes.DATEONLY,
+    allowNull: false,
+      validate: {
+        isDate: true
+      }
+    },
     start_time: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -34,13 +41,21 @@ module.exports = function(sequelize, DataTypes) {
         len: [3, 4]
       }
     },
-    total_hours: {
-      type: DataTypes.FLOAT,
-      allowNull: false
-    },
     description: {
       type: DataTypes.TEXT, // String = 255 characters
       allowNull: true
+    },
+    total_hours: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    pay_rate: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
+    },
+    total_pay: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
     },
     time_entry_active: {
       type: DataTypes.BOOLEAN,
@@ -59,17 +74,18 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   TimeEntries.associate = function(models) {
-    // Associating Users with Clients
-    // When a User is deleted, this deletes all their corresponding Clients
+
     TimeEntries.belongsTo(models.Users, {
-      onDelete: "cascade"
-    });
-    TimeEntries.belongsTo(models.Projects, {
+      foreignKey: 'user_id',
       onDelete: "cascade"
     });
     TimeEntries.belongsTo(models.Clients, {
-      onDelete: "cascade"
+      foreignKey: 'client_id',
     });
+    TimeEntries.belongsTo(models.Projects, {
+      foreignKey: 'project_id',
+    });
+
   };
   return TimeEntries;
 };
