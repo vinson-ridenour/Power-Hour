@@ -25,11 +25,8 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-  // Include other associations as other models are built out
-
   Projects.associate = function(models) {
     // Associating Projects with Clients
-    // When a Project is deleted, deletes all of their corresponding Projects
     Projects.belongsTo(models.Clients, {
       foreignKey: 'client_id',
     });

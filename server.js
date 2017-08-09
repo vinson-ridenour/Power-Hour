@@ -35,8 +35,9 @@ require("./power-hour/routes/api-routes.js")(app);
 require("./power-hour/routes/users-routes.js")(app);
 require("./power-hour/routes/view-routes.js")(app);
 require("./power-hour/routes/time-entries-routes.js")(app);
+require("./power-hour/routes/clients-routes.js")(app);
+require("./power-hour/routes/projects-routes.js")(app);
 // require("./power-hour/routes/utilities-routes.js")(app);
-
 
 // Starts the server to begin listening
 // =============================================================
