@@ -28,18 +28,12 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     start_time: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [3, 4]
-      }
+      type: DataTypes.DATE,
+      allowNull: true
     },
     end_time: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [3, 4]
-      }
+      type: DataTypes.DATE,
+      allowNull: true
     },
     description: {
       type: DataTypes.TEXT,

@@ -1,6 +1,14 @@
+var db = require("./../../models");
+
 module.exports = function(app) {
-  app.get("/api/times", function(req, res) {
-    // 1. Add a join to include all of each Author's Posts
-      res.json("time");
-  });
+	app.post("/api/add", function(req, res) {
+		db.Entries.create({
+			title: req.body.title,
+			body: req.body.body,
+			category: req.body.category
+		})
+		.then(function(dbPost) {
+			res.json("true");
+		});
+	});
 }

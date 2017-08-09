@@ -1,0 +1,211 @@
+<!-- NavBar -->
+<nav class="navbar navbar-light bg-faded">
+<a class="navbar-brand" href="#">
+	<img src="https://stpeterineastgate.org.uk/wp-content/uploads/2016/02/power-hour-event.png" width="30" height="30" class="d-inline-block align-top" alt="">
+	Power Hour
+</a>
+</nav>
+
+<br><br>
+
+<h1 class="offset-5">Welcome!</h1>
+
+<br>
+
+<div class="container offset-3">
+	<h2>New Entry</h2>
+
+	<form>
+		<div id="client_name_container" class="form-group row">
+			<label for="client_name" class="col-2 col-form-label">Client Name</label>
+			<div class="col-6">
+				<select id="client_id">
+					<option></option>
+					<option value="-1">New Client</option>
+				</select>
+			</div>
+		</div>
+
+		<div id="project_name_container" class="form-group row">
+			<label for="project_name" class="col-2 col-form-label">Project Name</label>
+			<div class="col-6">
+				<select id="project_id">
+					<option></option>
+					<option value="-1">New Project</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea id="description" class="form-control col-8" rows="3"></textarea>
+		</div>
+		<div class="form-group row">
+			<label for="date_start" class="col-2 col-form-label">Date Work</label>
+			<div class="col-2">
+				<input type="text" id="date_start" class="form-control">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="time_start" class="col-2 col-form-label">Time Start</label>
+			<div class="col-2">
+				<input type="text" id="time_start" class="form-control">
+			</div>
+			<label for="time_end" class="col-2 col-form-label">Time End</label>
+			<div class="col-2">
+				<input type="text" id="time_end" class="form-control">
+			</div>
+			<label for="time_total" class="col-2 col-form-label">Total Time</label>
+			<div class="col-2">
+				<input type="number" id="time_total" class="form-control">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="pay_rate" class="col-2 col-form-label">Pay Rate</label>
+			<div class="col-2">
+				<input type="number" id="pay_rate" class="form-control">
+			</div>
+			<label for="total_pay" class="col-2 col-form-label">Total Pay</label>
+			<div class="col-2">
+				<input type="number" id="total_pay" class="form-control">
+			</div>
+		</div>
+		<button type="submit" id="subEntry" class="btn btn-primary">Create Entry</button>
+		<input type="hidden" id="uuidInput">
+		<input type="hidden" id="user_id">
+		<input type="hidden" id="time_entry_active" value="0">
+	</form>
+</div>
+
+<!--Client MODAL form -->
+<div id="client_form" class="modal fade">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Enter a new client</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="client_name">Client Name</label>
+					<input type="text" id="client_name"  class="form-control">
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" id="client_save" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--Project MODAL form -->
+<div id="project_form" class="modal fade">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Enter a new project</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="client_name">Project Name</label>
+					<input type="text" id="project_name"  class="form-control">
+				</div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" id="project_save" class="btn btn-primary">Save changes</button>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
+
+<div class="container">
+	<h2> Your Stuff </h2>
+
+	<div id="mainMenu">
+	</div>
+		<!--start container for CLIENTS accordion -->
+		<div class="list-group panel clientPanels">
+			<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">Client 1</a>
+			<div class="collapse" id="demo3">
+				<a href="#SubMenu1" class="list-group-item" data-toggle="collapse" data-parent="#SubMenu1">Project 1 <i class="fa fa-caret-down"></i></a>
+				<div class="collapse list-group-submenu" id="SubMenu1">
+					<a href="#" class="list-group-item" data-parent="#SubMenu1"></a>
+					<h2 class="offset-5">Project Notes</h2>
+
+					<table cellpadding="0" cellspacing="0" style="width: 100%">
+						<thead>
+							<tr>
+							<th scope="col">ID</th>
+							<th scope="col">Date</th>
+							<th scope="col">Start Time</th>
+							<th scope="col">End Time</th>
+							<th scope="col">Total Time</th>
+							<th scope="col">Pay Rate</th>
+							<th scope="col">Total Pay</th>
+							<th scope="col">Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+							<th scope="row">1</th>
+							<td>07/08/2017</td>
+							<td>6:30pm</td>
+							<td>9:30pm</td>
+							<td>3hrs?</td>
+							<td>$50/hr</td>
+							<td>$150</td>
+							<td>Hmm...how long can we make this?...</td>
+
+							</tr>
+							<tr>
+							<th scope="row">2</th>
+							<td>07/08/2017</td>
+							<td>6:30pm</td>
+							<td>9:30pm</td>
+							<td>3hrs?</td>
+							<td>$50/hr</td>
+							<td>$150</td>
+							<td>Hmm...how long can we make this?...</td>
+							</tr>
+							<tr>
+							<th scope="row">3</th>
+							<td>07/08/2017</td>
+							<td>6:30pm</td>
+							<td>9:30pm</td>
+							<td>3hrs?</td>
+							<td>$50/hr</td>
+							<td>$150</td>
+							<td>Hmm...how long can we make this?...</td>
+							</tr>
+							<tr>
+							<th scope="row">4</th>
+							<td>07/08/2017</td>
+							<td>6:30pm</td>
+							<td>9:30pm</td>
+							<td>3hrs?</td>
+							<td>$50/hr</td>
+							<td>$150</td>
+							<td>Hmm...how long can we make this?...</td>
+							</tr>
+						</tbody>
+					</table>
+					<div id="testArea"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
