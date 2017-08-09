@@ -8,9 +8,9 @@ module.exports = function(app) {
 			"start_time": req.body.start_time,
             "end_time": req.body.end_time,
             "description": req.body.description,
-            "pay_rate": req.body.pay_rate
-            // "total_hours": req.body.total_hours,
-			// "total_pay": req.body.total_pay,
+            "pay_rate": req.body.pay_rate,
+            "total_hours": req.body.total_hours,
+			"total_pay": req.body.total_pay
 		})
 		.then(function(dbPost) {
 			console.log(dbPost);
@@ -22,11 +22,11 @@ module.exports = function(app) {
     });
 
     //Read all time entries
-	app.get("/time-entry/list/:id", function(req, res) {
+	app.get("/time-entry/list/:user_id", function(req, res) {
 		console.log(req.params)
 		db.TimeEntries.findAll({
 			"where": {
-				"user_id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.user_id)
 			}
 		})
 		.then(function(dbPost) {
@@ -37,20 +37,20 @@ module.exports = function(app) {
 		})
 	});
 
-	//Update or Delete a time entry
-	app.post("/time-entry/list/:id", function(req, res) {
+	//Update a time entry
+	app.post("/time-entry/list/:time_entry_id", function(req, res) {
 		console.log(req.params)
 		db.TimeEntries.update({
                 "date": req.body.date,
                 "start_time": req.body.start_time,
                 "end_time": req.body.end_time,
                 "description": req.body.description,
-                "pay_rate": req.body.pay_rate
-                // "total_hours": req.body.total_hours,
-                // "total_pay": req.body.total_pay,
+                "pay_rate": req.body.pay_rate,
+                "total_hours": req.body.total_hours,
+			    "total_pay": req.body.pay_rate
 			},
 			{"where": {
-				"user_id": parseInt(req.params.id)
+				"time_entry_id": parseInt(req.params.time_entry_id)
 				}
 			}
 		)

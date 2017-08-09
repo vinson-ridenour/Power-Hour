@@ -23,11 +23,11 @@ module.exports = function(app) {
 	});
 
 	//Read a user
-	app.get("/users/list/:id", function(req, res) {
+	app.get("/users/list/:user_id", function(req, res) {
 		console.log(req.params)
 		db.Users.findAll({
 			"where": {
-				"user_id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.user_id) // add OR clause here for UID
 			}
 		})
 		.then(function(dbPost) {
@@ -40,7 +40,7 @@ module.exports = function(app) {
 
 	//Update or Delete a user
 	//##To Do: add flag for inactive user
-	app.post("/users/list/:id", function(req, res) {
+	app.post("/users/list/:user_id", function(req, res) {
 		console.log(req.params)
 		db.Users.update({
 				"first_name": req.body.first_name,
@@ -53,7 +53,7 @@ module.exports = function(app) {
 				"phone": req.body.phone
 			},
 			{"where": {
-				"user_id": parseInt(req.params.id)
+				"user_id": parseInt(req.params.user_id)
 				}
 			}
 		)
