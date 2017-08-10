@@ -38,8 +38,8 @@ $(document).ready(function(){
 //Initialize time and date pickers
 $(function() {
 	$("#date_start").datepicker();
-	$("#time_start").timepicker();
-	$("#time_end").timepicker();
+	$("#time_start").timepicker({'step': 5});
+	$("#time_end").timepicker({'step': 5});
 });
 
 function createEntry() {
@@ -56,7 +56,7 @@ function createEntry() {
 		"total_hours": $("#time_total").val().trim(),
 		"time_entry_active": $("#time_entry_active").val().trim()
 	}
-			console.log(entry);
+		console.log(entry);
 	//pass user to AJAX
 	$.ajax({
 		"method": "POST",
