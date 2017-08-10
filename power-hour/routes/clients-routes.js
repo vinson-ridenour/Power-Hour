@@ -1,13 +1,11 @@
-var db = require("./../../models");
-
 // Dependencies
 // =============================================================
 var path = require("path");
 var express = require("express");
 var router = express.Router();
 
-var db = require("./../../models");
 // Routes
+var db = require("./../../models");
 
 //Create a client
 router.post("/clients/add", function(req, res) {
