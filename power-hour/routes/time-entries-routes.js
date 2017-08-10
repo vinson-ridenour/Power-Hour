@@ -71,8 +71,12 @@ router.post("/time-entry/list/:time_entry_id", function(req, res) {
 	})
 });
 
-router.get("/time-entry/all", function(req, res) {
-	db.TimeEntries.findAll({})
+router.get("/time-entry/all/:client_id", function(req, res) {
+	db.TimeEntries.findAll({
+		"where" : {
+			"client_id": req.params.client_id
+		}
+	})
 	.then(function(dbPost) {
 			var hbsObject = {
 				"entries": dbPost,
