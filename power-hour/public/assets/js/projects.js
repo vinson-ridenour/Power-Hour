@@ -20,10 +20,10 @@ function saveProject(){
 	});
 }
 
-function getProjects() {
+function getProjects(clientID) {
 	var data = {
 		"user_id": $("#user_id").val(),
-		"client_id": $("#client_id").val()
+		"client_id": $("#client_id").val() || clientID
 	}
 
 	$.ajax({
@@ -52,7 +52,7 @@ function displayProjects(projects){
 		option_value.html(projects[i].project_name);
 		$("#project_id").append(option_value);
 	}
-	if (projects.length < 1) {
+	if (projects.length < 1 || projects.name === "SequelizeDatabaseError") {
 		$("#project_id").append("<option></option>")
 	} 
 	$("#project_id").append("<option value='-1'>New Project</option>")
