@@ -40,15 +40,15 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     total_hours: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     pay_rate: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     total_pay: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     time_entry_active: {
@@ -56,7 +56,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     },
-    // underscored: true,
 }, {
     validate: {
     bothTimesOrNone() {
