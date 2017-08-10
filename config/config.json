@@ -1,10 +1,10 @@
 {
   "development": {
-    "username": "a76w1okqmxpbkwjv",	
-    "password": "iylxx6t0dii8kdu1",
-    "database": "d67q4o1ggieydaf5",
-    "host": "lgg2gx1ha7yp2w0k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql"
+    "username": "username",
+    "password": "password",
+    "database": "bootcamp_db",
+    "host": "127.0.0.1",
+    "dialect": "mysql" 
   },
   "test": {
     "username": "root", 
@@ -14,10 +14,7 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null, 
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
