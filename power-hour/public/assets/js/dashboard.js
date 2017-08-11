@@ -32,7 +32,14 @@ $(document).ready(function(){
 	$("#project_save").on("click", function(){
 		saveProject();
 	});
-	$( "#testArea" ).load( "time-entry/all" );
+
+	$("#clientButtons").on("click", ".client-entries", function(){
+		var clientID = $(this).attr("id");
+		clientID = clientID.split("_")[1];
+
+		showProjectEntries(clientID);
+	});
+
 })
 
 //Initialize time and date pickers
@@ -78,32 +85,48 @@ $(function() {
 // };
 
 function createEntry() {
+	//date_start = 04-Oct-1980
+	var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
+	startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
+
+	var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
+	endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
+
+	var totalTime = endTime.diff(startTime, "minutes");
+	totalTime = totalTime / 60;
+
 	var entry = {
 		"user_id": $("#user_id").val().trim(),
 		"client_id": $("#client_id").val().trim(),
 		"project_id": $("#project_id").val().trim(),
 		"date": $("#date_start").val().trim(),
-		"start_time": $("#date_start").val().trim(),
-		"end_time": $("#date_start").val().trim(),
+		"start_time": startTime.format(),
+		"end_time": endTime.format(),
 		"description": $("#description").val().trim(),
 		"pay_rate": $("#pay_rate").val().trim(),
 		"total_pay": $("#total_pay").val().trim(),
-		"total_hours": $("#time_total").val().trim(),
+		"total_hours": totalTime,
 		"time_entry_active": $("#time_entry_active").val().trim()
 	}
-		console.log(entry);
 	//pass user to AJAX
+	console.log(entry);
+
 	$.ajax({
 		"method": "POST",
 		"url": "/time-entry/add",
 		"data": entry
 	})
 	.done(function() {
-		console.log("AJAX done");
 		//redirect to dashboard
 //		window.location.href = "/dashboard";
+		//clear form entries
+		$("#time-entry").trigger("reset");
 	})
 	.error(function(err){
 		console.log(err);
 	});
+}
+
+function showProjectEntries(clientID) {
+	$("#testArea").load( "/time-entry/all/" + clientID );
 }
