@@ -20,6 +20,14 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       foreignKey: true
     },
+    project_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      foreignKey: true,
+      validate: {
+        len: [1, 100]
+      }
+    },
     date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
@@ -75,7 +83,8 @@ module.exports = function(sequelize, DataTypes) {
       foreignKey: 'client_id'
     });
     TimeEntries.belongsTo(models.Projects, {
-      foreignKey: 'project_id'
+      foreignKey: 'project_id',
+      foreignKey: 'project_name'
     });
   };
   return TimeEntries;
