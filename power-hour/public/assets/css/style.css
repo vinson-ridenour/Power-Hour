@@ -1,49 +1,21 @@
-*, *:before, *:after {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+section {
+  /*background-image: url("/assets/img/greenbackground2.jpg");*/
+  height:100vh;
+  background-color: #6EB43F;
 }
-
-body {
-    background: url(http://imgur.com/iizF0pN);
-    background-size: 50px, 130px, auto;
-  font-family: 'Nunito', sans-serif;
-  color: #384047;
+.navColor {
+  background-color: darkgreen;
+  height: 75px;
 }
-
-table {
-
-    table-layout: auto
-  /*max-width: 9060px;
-  margin: 10px auto;*/
+.vertAligned {
+  padding-top: 10px;
 }
-
-caption {
-  font-size: 1.6em;
-  font-weight: 400;
-  padding: 10px 0;
+h1 {
+  font-size:100px;
+  font-family: 'Raleway', sans-serif;
+  color:white;
 }
-
-thead th {
-  font-weight: 400;
-  background: #8a97a0;
-  color: #FFF;
+p {
+  font-family: 'Raleway', sans-serif;
+  color:white;
 }
-
-tr {
-  background: #f4f7f8;
-  border-bottom: 1px solid #FFF;
-  margin-bottom: 5px;
-}
-
-tr:nth-child(even) {
-  background: #e8eeef;
-}
-
-th, td {
-  text-align: center;
-  padding: 10px;
-  font-weight: 300;
-}
-
-
