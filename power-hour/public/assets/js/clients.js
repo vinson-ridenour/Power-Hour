@@ -30,7 +30,8 @@ function getClients() {
 	})
 	.done(function(response) {
 		displayClients(response);
-		displayClientsAccordion(response);
+		displayClientsButtons(response);
+//		displayClientsAccordion(response);
 	})
 	.error(function(err){
 		console.log(err);
@@ -52,9 +53,12 @@ function displayClients(clients) {
 		option_value.html(clients[i].client_name);
 		$("#client_id").append(option_value);
 	}
+		$("#client_id").prepend("<option></option>")
+	/*
 	if (clients.length == 1) {
 		$("#client_id").append("<option></option>")
 	} 
+*/
 	$("#client_id").append("<option value='-1'>New Client</option>")
 
 }
@@ -86,5 +90,16 @@ function displayClientsAccordion(clients) {
 
 		//append to mainMenu
 		$("#mainMenu").append(panel);
+	}
+}
+
+function displayClientsButtons(clients) {
+	//Display Client Names as buttons
+	for (var i = 0; i < clients.length; i++){
+		var buttons = $("<button>");
+		buttons.attr("id", "clientID_" + clients[i].client_id);
+		buttons.addClass("btn btn-info client-entries");
+		buttons.html(clients[i].client_name);
+		$("#clientButtons").append(buttons);
 	}
 }
