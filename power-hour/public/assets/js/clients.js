@@ -98,7 +98,7 @@ function displayClientsButtons(clients) {
 	for (var i = 0; i < clients.length; i++){
 		var buttons = $("<button>");
 		buttons.attr("id", "clientID_" + clients[i].client_id);
-		buttons.addClass("client-entries");
+		buttons.addClass("btn btn-info client-entries");
 		buttons.html(clients[i].client_name);
 		$("#clientButtons").append(buttons);
 	}
