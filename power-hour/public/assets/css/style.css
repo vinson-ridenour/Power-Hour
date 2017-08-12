@@ -1,25 +1,22 @@
 body{
-  background-image: url("/assets/img/image1.jpg");
+background-image: url("/assets/img/image1.jpg");
   background-size: 1368px 1000px;
   background-repeat: no-repeat;
 }
-
 #side-bar{
-    height: 900px;
+
+  height: 900px;
     overflow-y: hidden;
     background: rgba(1, 67, 99, 0.8);
+}
 
-}
-}
 .navColor {
   background-color: darkgreen;
   height: 75px;
 }
-
 .vertAligned {
   padding-top: 10px;
 }
-
 h1 {
   font-size:118px;
   font-family: 'Raleway', sans-serif;
