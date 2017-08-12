@@ -48,8 +48,8 @@ require("./power-hour/routes/utilities-routes.js")
 ];
 
 //require("./power-hour/routes/api-routes.js")(app);
-
 //require("./power-hour/routes/clients-routes.js")(app);
+//require("./power-hour/routes/utilities-routes.js")(app);
 
 app.use("/", routes);
 // Starts the server to begin listening
