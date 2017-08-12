@@ -50,6 +50,7 @@ function checkUser(uid) {
 			}
 		}
 		$("#user_id").val(response[0].user_id);
+		getClients();
 	})
 	.error(function(err){
 		console.log(err);

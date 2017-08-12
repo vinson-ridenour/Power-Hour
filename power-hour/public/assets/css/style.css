@@ -3,6 +3,11 @@ section {
   height:100vh;
   background-color: #6EB43F;
 }
+
+body {
+  background-color: #6EB43F;
+}
+
 .navColor {
   background-color: darkgreen;
   height: 75px;
@@ -18,4 +23,8 @@ h1 {
 p {
   font-family: 'Raleway', sans-serif;
   color:white;
+}
+
+.tagline {
+  font-size: 30px;
 }
