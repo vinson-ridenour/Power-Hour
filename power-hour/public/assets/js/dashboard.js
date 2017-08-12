@@ -40,6 +40,37 @@ $(document).ready(function(){
 		showProjectEntries(clientID);
 	});
 
+	$("#time_end").on("change", function(){
+		console.log("time_end changed")
+		//date_start = 04-Oct-1980
+		var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
+		startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
+
+		var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
+		endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
+
+		var totalTime = endTime.diff(startTime, "minutes");
+		totalTime = totalTime / 60;
+
+		$("#time_total").val(totalTime);
+	});
+
+	$("#time_end").on("change", function(){
+		console.log("time_end changed")
+		//date_start = 04-Oct-1980
+		var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
+		startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
+
+		var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
+		endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
+
+		var totalTime = endTime.diff(startTime, "minutes");
+		totalTime = (totalTime / 60).toFixed("2");
+
+
+		$("#time_total").val(totalTime);
+	});
+
 })
 
 //Initialize time and date pickers
@@ -85,15 +116,6 @@ $(function() {
 // };
 
 function createEntry() {
-	//date_start = 04-Oct-1980
-	var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
-	startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
-
-	var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
-	endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
-
-	var totalTime = endTime.diff(startTime, "minutes");
-	totalTime = totalTime / 60;
 
 	var entry = {
 		"user_id": $("#user_id").val().trim(),
@@ -105,7 +127,7 @@ function createEntry() {
 		"description": $("#description").val().trim(),
 		"pay_rate": $("#pay_rate").val().trim(),
 		"total_pay": $("#total_pay").val().trim(),
-		"total_hours": totalTime,
+		"total_hours": $("#time_total").val().trim(),
 		"time_entry_active": $("#time_entry_active").val().trim()
 	}
 	//pass user to AJAX

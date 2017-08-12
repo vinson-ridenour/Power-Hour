@@ -39,7 +39,8 @@ router.get("/dashboard", function(req, res) {
 
 // blog route loads blog.html
 router.get("/account", function(req, res) {
-	res.sendFile(path.join(__dirname, "../public/newaccount.html"));
+		res.render("account");
+//	res.sendFile(path.join(__dirname, "../public/newaccount.html"));
 });
 
 // authors route loads author-manager.html
