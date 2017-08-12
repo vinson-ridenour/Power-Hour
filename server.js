@@ -25,6 +25,12 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
+var handlebars = require("handlebars");
+var groupBy = require('handlebars-group-by');
+var HandlebarsIntl = require('handlebars-intl');
+handlebars.registerHelper(groupBy(handlebars));
+HandlebarsIntl.registerWith(handlebars);
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -37,13 +43,13 @@ var routes = [require("./power-hour/routes/view-routes.js"),
 require("./power-hour/routes/users-routes.js"),
 require("./power-hour/routes/clients-routes.js"),
 require("./power-hour/routes/projects-routes.js"),
-require("./power-hour/routes/time-entries-routes.js")
+require("./power-hour/routes/time-entries-routes.js"),
+require("./power-hour/routes/utilities-routes.js")
 ];
 
 //require("./power-hour/routes/api-routes.js")(app);
 
 //require("./power-hour/routes/clients-routes.js")(app);
-// require("./power-hour/routes/utilities-routes.js")(app);
 
 app.use("/", routes);
 // Starts the server to begin listening
