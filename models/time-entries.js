@@ -22,10 +22,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     project_name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      foreignKey: true,
+      allowNull: true,
       validate: {
-        len: [1, 100]
+        len: [0, 100]
       }
     },
     date: {
@@ -74,18 +73,5 @@ module.exports = function(sequelize, DataTypes) {
   }
   });
 
-  TimeEntries.associate = function(models) {
-
-    TimeEntries.belongsTo(models.Users, {
-      foreignKey: 'uuid'
-    });
-    TimeEntries.belongsTo(models.Clients, {
-      foreignKey: 'client_id'
-    });
-    TimeEntries.belongsTo(models.Projects, {
-      foreignKey: 'project_id',
-      foreignKey: 'project_name'
-    });
-  };
   return TimeEntries;
 };
