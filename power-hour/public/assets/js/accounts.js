@@ -7,6 +7,7 @@ function processAccount() {
 	//create user object
 
 	var user = {
+		"uuid": $("#uuidInput").val().trim(),
 		"first_name": $("#fnameInput").val().trim(),
 		"last_name": $("#lnameInput").val().trim(),
 		"address": $("#addressInput").val().trim(),
@@ -17,15 +18,17 @@ function processAccount() {
 		"phone": $("#phoneInput").val().trim()
 	}
 
+	console.log(user);
 	//pass user to AJAX
-
 	$.ajax({
 		"method": "POST",
 		"url": "/users/add",
 		"data": user
 	})
 	.done(function() {
-		console.log("AJAX done")
+		console.log("AJAX done");
+		//redirect to dashboard
+		window.location.href = "/dashboard";
 	})
 	.error(function(err){
 		console.log(err);
