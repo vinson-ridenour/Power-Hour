@@ -1,7 +1,5 @@
 // Dependencies
 // =============================================================
-// Dependencies
-// =============================================================
 var path = require("path");
 var express = require("express");
 var router = express.Router();
@@ -47,3 +45,4 @@ router.get('/utilities/pdfFromHTML', function(req, res){
 	});
 });
 module.exports = router;
+};

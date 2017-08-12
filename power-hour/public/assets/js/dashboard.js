@@ -81,7 +81,6 @@ $(document).ready(function(){
 
 		$("#total_pay").val(totalPay);
 	});
-
 })
 
 //Initialize time and date pickers
@@ -127,11 +126,15 @@ $(function() {
 // };
 
 function createEntry() {
+	//date_start = 04-Oct-1980
 	var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
 	startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
 
 	var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
 	endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
+
+	var totalTime = endTime.diff(startTime, "minutes");
+	totalTime = totalTime / 60;
 
 	var entry = {
 		"user_id": $("#user_id").val().trim(),

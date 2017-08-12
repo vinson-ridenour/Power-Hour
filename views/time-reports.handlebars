@@ -1,6 +1,7 @@
 <table cellpadding="0" cellspacing="0" style="width: 100%" class="table table-inverse table-bordered table-striped">
 	<thead>
 		<tr>
+			<th scope="col">ID</th>
 			<th scope="col">Date</th>
 			<th scope="col">Start Time</th>
 			<th scope="col">End Time</th>
@@ -19,6 +20,13 @@
 		<tr>
 			<td>{{this.date}}</td>
 			<td>{{this.start_time}}</td>
+			<th colspan="8">Project ID {{project_id}}</th>
+		</tr>
+	{{#each items}}
+		<tr>
+			<th scope="row">{{this.time_entry_id}}</th>
+			<td>{{this.date}}</td>
+			<td>{{formatTime this.start_time "hhmm"}}</td>
 			<td>{{this.end_time}}</td>
 			<td>{{this.total_hours}}</td>
 			<td>{{this.pay_rate}}</td>
