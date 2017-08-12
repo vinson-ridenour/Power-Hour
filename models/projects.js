@@ -25,11 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-  Projects.associate = function(models) {
-    // Associating Projects with Clients
-    Projects.belongsTo(models.Clients, {
-      foreignKey: 'client_id',
-    });
-  };
   return Projects;
 };

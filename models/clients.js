@@ -25,15 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-  Clients.associate = function(models) {
-    // Associating Clients with Projects
-    Clients.hasMany(models.Projects, {
-      foreignKey: 'project_id'
-    });
-    // Associating Clients with Users
-    Clients.belongsTo(models.Users, {
-      foreignKey: 'user_id'
-    });
-  };
   return Clients;
 };
