@@ -71,6 +71,17 @@ $(document).ready(function(){
 		$("#time_total").val(totalTime);
 	});
 
+	$("#pay_rate").on("change", function(){
+		console.log("pay rate changed")
+		//date_start = 04-Oct-1980
+		var totalPay = $("#pay_rate").val();
+		totalPay = (parseFloat(totalPay) * parseFloat($("#time_total").val()).toFixed("2"));
+		totalPay = totalPay.toFixed("2");
+
+
+		$("#total_pay").val(totalPay);
+	});
+
 })
 
 //Initialize time and date pickers
@@ -116,6 +127,11 @@ $(function() {
 // };
 
 function createEntry() {
+	var startTime = $("#date_start").val().trim() + ' ' + $("#time_start").val().trim();
+	startTime = moment(startTime, "MM/DD/YYYY hh:mm a")
+
+	var endTime = $("#date_start").val().trim() + ' ' + $("#time_end").val().trim();
+	endTime = moment(endTime, "MM/DD/YYYY hh:mm a")
 
 	var entry = {
 		"user_id": $("#user_id").val().trim(),
