@@ -5,7 +5,9 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var path = require("path");
 var bodyParser = require("body-parser");
+var pdf = require("express-pdf");
 
 // Sets up the Express App
 // =============================================================
@@ -23,6 +25,12 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
+var handlebars = require("handlebars");
+var groupBy = require('handlebars-group-by');
+var HandlebarsIntl = require('handlebars-intl');
+handlebars.registerHelper(groupBy(handlebars));
+HandlebarsIntl.registerWith(handlebars);
+
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -31,17 +39,23 @@ app.use(express.static("./power-hour/public"));
 
 // Routes
 // =============================================================
-require("./power-hour/routes/api-routes.js")(app);
-require("./power-hour/routes/users-routes.js")(app);
-require("./power-hour/routes/view-routes.js")(app);
-require("./power-hour/routes/time-entries-routes.js")(app);
-// require("./power-hour/routes/utilities-routes.js")(app);
+var routes = [require("./power-hour/routes/view-routes.js"),
+require("./power-hour/routes/users-routes.js"),
+require("./power-hour/routes/clients-routes.js"),
+require("./power-hour/routes/projects-routes.js"),
+require("./power-hour/routes/time-entries-routes.js"),
+require("./power-hour/routes/utilities-routes.js")
+];
 
+//require("./power-hour/routes/api-routes.js")(app);
+//require("./power-hour/routes/clients-routes.js")(app);
+//require("./power-hour/routes/utilities-routes.js")(app);
 
+app.use("/", routes);
 // Starts the server to begin listening
 // =============================================================
 db.sequelize.sync({ force: false }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+	app.listen(PORT, function() {
+		console.log("App listening on PORT " + PORT);
+	});
 });

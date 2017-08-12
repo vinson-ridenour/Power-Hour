@@ -13,6 +13,11 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 50]
       }
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      foreignKey: true
+    },
     client_active: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -20,11 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-  Clients.associate = function(models) {
-    // Associating Clients with Projects
-    Clients.hasMany(models.Projects, {
-      foreignKey: 'project_id'
-    });
-  };
   return Clients;
 };

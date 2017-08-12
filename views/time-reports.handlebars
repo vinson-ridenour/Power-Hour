@@ -14,6 +14,12 @@
 	<tbody>
 	{{#group entries by="project_id"}}
 		<tr>
+			<th colspan="8">Project ID {{project_name}}</th>
+		</tr>
+	{{#each items}}
+		<tr>
+			<td>{{this.date}}</td>
+			<td>{{this.start_time}}</td>
 			<th colspan="8">Project ID {{project_id}}</th>
 		</tr>
 	{{#each items}}

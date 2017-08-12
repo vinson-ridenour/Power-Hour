@@ -20,6 +20,13 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       foreignKey: true
     },
+    project_name: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [0, 100]
+      }
+    },
     date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
@@ -28,33 +35,27 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     start_time: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [3, 4]
-      }
+      type: DataTypes.DATE,
+      allowNull: true
     },
     end_time: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      validate: {
-        len: [3, 4]
-      }
+      type: DataTypes.DATE,
+      allowNull: true
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: true
     },
     total_hours: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     pay_rate: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     total_pay: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     time_entry_active: {
@@ -62,7 +63,6 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: true
     },
-    // underscored: true,
 }, {
     validate: {
     bothTimesOrNone() {
@@ -73,17 +73,5 @@ module.exports = function(sequelize, DataTypes) {
   }
   });
 
-  TimeEntries.associate = function(models) {
-
-    TimeEntries.belongsTo(models.Users, {
-      foreignKey: 'uuid'
-    });
-    TimeEntries.belongsTo(models.Clients, {
-      foreignKey: 'client_id'
-    });
-    TimeEntries.belongsTo(models.Projects, {
-      foreignKey: 'project_id'
-    });
-  };
   return TimeEntries;
 };

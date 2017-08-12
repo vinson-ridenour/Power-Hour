@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 50]
+        len: [1, 100]
       }
     },
     client_id: {
@@ -25,14 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       }
   });
 
-  // Include other associations as other models are built out
-
-  Projects.associate = function(models) {
-    // Associating Projects with Clients
-    // When a Project is deleted, deletes all of their corresponding Projects
-    Projects.belongsTo(models.Clients, {
-      foreignKey: 'client_id',
-    });
-  };
   return Projects;
 };
